@@ -26,3 +26,4 @@ wavlm_logits, wavlm_embeddings = wavlm_model(data, return_feature=True)
 # Probability
 wavlm_prob = F.softmax(wavlm_logits, dim=1)
 accent_label = print(english_accent_list[torch.argmax(wavlm_prob).detach().cpu().item()])
+
