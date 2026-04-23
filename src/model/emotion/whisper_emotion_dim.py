@@ -235,7 +235,7 @@ class WhisperWrapper(
                 nn.Linear(hidden_dim, 2)
             )
         
-    def forward(self, x, length=None):
+    def forward(self, x, length=None, return_feature=False):
                 
         # 1. feature extraction and projections
         if length is not None:
@@ -308,7 +308,8 @@ class WhisperWrapper(
         if(self.predict_gender):
             gender_outputs = self.gender_layer(features)
             return arousal, valence, dominance, gender_outputs
-        
+        if return_feature:
+            features, arousal, valence, dominance
         return arousal, valence, dominance
         
     # From huggingface
