@@ -77,7 +77,7 @@ class WavLMEncoderLayer(nn.Module):
 
         if output_attentions:
             outputs += (attn_weights,)
-
+        
         return outputs
 
 
@@ -283,6 +283,7 @@ class WavLMWrapper(
         # B x D
         fluency_predicted       = self.fluency_layer(features)
         dysfluency_predicted    = self.dysfluency_layer(features)
+        if return_feature: return fluency_predicted, dysfluency_predicted, features
         return fluency_predicted, dysfluency_predicted
     
     # From huggingface
