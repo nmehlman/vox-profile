@@ -232,7 +232,7 @@ class WavLMWrapper(
         # 2. get length and mask
         if length is not None:
             length = self.get_feat_extract_output_lengths(length.detach().cpu())
-            length = length.cuda()
+            length = length.to(x.device)
 
         if self.pretrain_model == "wavlm": 
             x = self.backbone_model(
