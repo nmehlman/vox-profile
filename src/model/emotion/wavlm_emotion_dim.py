@@ -294,7 +294,8 @@ class WavLMWrapper(
         if(self.predict_gender):
             gender_outputs = self.gender_layer(features)
             return arousal, valence, dominance, gender_outputs
-        
+        if return_feature:
+            return features, arousal, valence, dominance
         return arousal, valence, dominance
     
     # From huggingface
