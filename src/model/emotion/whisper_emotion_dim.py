@@ -309,7 +309,7 @@ class WhisperWrapper(
             gender_outputs = self.gender_layer(features)
             return arousal, valence, dominance, gender_outputs
         if return_feature:
-            features, arousal, valence, dominance
+            return features, arousal, valence, dominance
         return arousal, valence, dominance
         
     # From huggingface
