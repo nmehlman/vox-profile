@@ -252,7 +252,7 @@ class WhisperWrapper(
                 sampling_rate=16000,
                 max_length=max_audio_len
             )
-            features = features.input_features.cuda()
+            features = features.input_features.to(x.device)
         else:
             max_audio_len = 15*16000
             features = self.feature_extractor(
@@ -261,7 +261,7 @@ class WhisperWrapper(
                 sampling_rate=16000,
                 max_length=max_audio_len
             )
-            features = features.input_features.cuda()
+            features = features.input_features.to(x.device)
         
         # 2. get length and mask
         if length is not None:
